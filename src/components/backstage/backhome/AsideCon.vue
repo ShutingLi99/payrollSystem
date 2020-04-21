@@ -7,8 +7,9 @@
   <div class="menu">
   <el-menu
     class="el-menu-vertical-demo"
-    :default-active="$route.path" :unique-opened=true router  @open="handleOpen" @close="handleClose"
+    :default-active="$route.path" :unique-opened=true @open="handleOpen" @close="handleClose" router
   >
+<!--    @select="handleSelect"-->
     <template v-for="(item, index) in asideGroup">
       <template v-if="item.children[0]">
         <el-submenu :index="item.index">
@@ -16,13 +17,13 @@
             <i :class="item.icon"></i>
             <span slot="title">{{ item.title }}</span>
           </template>
-          <el-menu-item :index="child.index" v-for="(child, i) in item.children" :key="i" :route="{path: child.path}" >
+          <el-menu-item :index="child.index" v-for="(child, i) in item.children" :key="i"  :route="{path: child.path,query: child.query}">
             <i :class="child.icon"></i>
             {{ child.title }}</el-menu-item>
         </el-submenu>
       </template>
       <template v-else>
-        <el-menu-item :index="item.index" :route="{path: item.path}">
+        <el-menu-item :index="item.index" :route="{path: item.path,query: item.query}">
           <i :class="item.icon"></i>
           <span slot="title">{{ item.title }}</span>
         </el-menu-item>
@@ -36,6 +37,9 @@
 <script>
     export default {
         name: "AsideCon",
+      props:[
+        "user_name","user_id"
+      ],
       data(){
         return{
           asideGroup:[
@@ -44,6 +48,7 @@
               index:'1',
               icon:'pay gonggao',
               path:'/back/announcement',
+              query:{emp_name:this.user_name,emp_id:this.user_id},
               children:[]
             },
             {
@@ -143,6 +148,22 @@
         }
       }
       ,methods: {
+          // handleSelect(key,keyPath){
+          //
+          //   console.log(key, keyPath);
+          //   if(key=='/back/announcement'){
+          //     console.log("jjjj");
+          //     this.$router.push({
+          //       path:key,
+          //       query:{emp_name:this.user_name,emp_id:this.user_id}
+          //     })
+          //   }
+          //   else{
+          //     this.$router.push({
+          //       path:key
+          //     })
+          //   }
+          // },
         handleOpen(key, keyPath) {
           console.log(key, keyPath);
         },

@@ -1,7 +1,7 @@
 <template>
     <div class="allhead">
       <div class="homeimg" >
-        <router-link to="/back/home">
+        <router-link :to="{path:'/back/home', query : {emp_name:this.user_name,emp_id:this.user_id}}" >
           <img id="home" src="../../../assets/images/home.png" >
         </router-link>
       </div>
@@ -39,7 +39,12 @@
 
 <script>
     export default {
-        name: "HeaderCon"
+        name: "HeaderCon",
+      props:[
+        "user_name","user_id"
+      ],
+      methods:{
+      }
     }
 </script>
 

@@ -17,7 +17,6 @@ module.exports = {
       var sql = sqlMap.login.select;
       connection.query(sql, [id], (err, result) => {
         if (err) {
-          console.log("到底有没输出")
           res.json({'status':504,'message':'不存在','data':err})
         } else {
           res.json(result)

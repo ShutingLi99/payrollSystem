@@ -25,10 +25,10 @@
               <el-input v-model="user.account" placeholder="账号" class="account-in"   clearable><i slot="prefix" class="pay yonghu"></i></el-input>
             </el-form-item>
             <el-form-item prop="password" label="">
-              <el-input v-model="user.password" show-password placeholder="密码"  class="pass-in"><i slot="prefix" class="pay mima"></i></el-input>
+              <el-input v-model="user.password" show-password placeholder="密码"  class="pass-in" @keyup.enter.native="doLogin('loginForm')"><i slot="prefix" class="pay mima"></i></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary"  class="logbut" @click="doLogin('loginForm')" @keyup.enter.native="doLogin('loginForm')" round>登  录</el-button>
+              <el-button type="primary"  class="logbut" @click="doLogin('loginForm')"  round>登  录</el-button>
               <el-button type="primary"  class="rebut"  v-on:click="resetForm('loginForm')" round>重  置</el-button>
             </el-form-item>
           </el-form>
@@ -88,11 +88,16 @@
                 console.log(res);
                 let data = res.data[0];
                 var cpasswd = data.passwd;
+                let user_id=data.emp_id;
+                let user_name=data.emp_name;
                 if(cpasswd!=this.user.password){
                   this.$message.error("密码不正确！");
+                }else if(user_id='100001'){
+                  this.$message.success("登录成功！");
+                  this.$router.push({ path:'/back' ,query:{emp_id:user_id,emp_name:user_name}});
                 }else{
                   this.$message.success("登录成功！");
-                  this.$router.push('./backhome');
+                  this.$router.push({ path:'/fronthome' ,query:{emp_id:user_id,emp_name:user_name}});
                 }
               }).catch(err=>{
               console.log(err);

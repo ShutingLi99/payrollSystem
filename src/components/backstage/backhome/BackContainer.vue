@@ -1,14 +1,14 @@
 <template>
   <div class="allcon">
     <el-container class="sallcon">
-      <el-aside class="asidel" style="width: 20%;height: 100%;position: absolute;">
-        <AsideCon/>
+      <el-aside class="asidel" style="width: 20%;height: 100%;position: absolute;" >
+        <AsideCon :user_name="user_name" :user_id="user_id"></AsideCon>
       </el-aside>
       <el-container class="ssallcon">
         <el-header class="head" style="width: 100%;height: 8%;position: absolute;">
-          <HeaderCon/>
+          <HeaderCon :user_name="user_name" :user_id="user_id"></HeaderCon>
         </el-header>
-          <el-main>
+          <el-main style="width: 100%;height: 92%;position: absolute;top:8%;">
             <router-view></router-view>
            </el-main>
       </el-container>
@@ -24,7 +24,13 @@
       AsideCon,
       HeaderCon
     },
-        name: "BackContainer"
+        name: "BackContainer",
+      data() {
+        return {
+          user_name: this.$route.query.emp_name,
+          user_id:this.$route.query.emp_id
+        };
+      }
 
     }
 </script>

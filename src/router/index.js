@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
-import BackHome from '@/components/backstage/BackHome'
 import BackContainer from '@/components/backstage/backhome/BackContainer'
 import AsideCon from '@/components/backstage/backhome/AsideCon'
 import HeaderCon from '@/components/backstage/backhome/HeaderCon'
@@ -19,6 +18,15 @@ export default new Router({
       path: '/test',
       name: 'BackContainer',
       component:BackContainer
+    },
+    {
+      path:'/back',component:resolve => require(['@/components/backstage/backhome/BackContainer'], resolve),
+      children:[
+        {path:'',redirect:{name:'home'}},
+        { path:'home', name:'home', component:resolve => require(['@/components/common/Home'], resolve) },
+        { path:'announcement', name:'announcement', component:resolve => require(['@/components/common/Announcement'], resolve)  },
+        { path:'depManagement', name:'depManagement', component:resolve => require(['@/components/backstage/pages/DepManager'], resolve)  },
+      ]
     }
     // { path:'/back', component:resolve => require(['@/components/backstage/backhome/BackContainer'], resolve),
     //   children:[
