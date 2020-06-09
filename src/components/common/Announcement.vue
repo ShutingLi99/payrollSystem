@@ -85,7 +85,6 @@
                 this.$message.error("目前没有任何公告！");
               }
               this.getNoticeRes = res.data;
-              console.log(this.getNoticeRes);
             }).catch(err=>{
             console.log(err);
           });

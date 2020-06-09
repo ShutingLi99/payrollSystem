@@ -49,16 +49,6 @@
               cancelButtonText: '取消',
               dangerouslyUseHTMLString: true
             }).then( inputContent => {
-
-              // let newChild = {
-              //   id: this.maxid+1,
-              //   label: inputContent.value,
-              //   depAble: 0,
-              //   jobAble: 1,
-              //   modAble: 1,
-              //   dep_id: this.tmpData.children.length+100,
-              //   children: []
-              // };
               this.maxid++;
               console.log(inputContent.value);
             axios.post('/api/addDep',
@@ -207,7 +197,8 @@
                       dep_id: data[i].dep_id,
                       children: []
                     });
-                    this.maxid += 1;
+                    if (data[i].job_name != null){
+                      this.maxid += 1;
                     depLen++;
                     strr = `${data[i].job_name}  ${data[i].bas_salary}`;
                     this.dep[depLen - 1].children.push({
@@ -215,11 +206,12 @@
                       label: strr,
                       depAble: 0,
                       jobAble: 0,
-                      job_name:data[i].job_name,
+                      job_name: data[i].job_name,
                       modAble: 1,
-                      sal:data[i].bas_salary,
+                      sal: data[i].bas_salary,
                       job_id: data[i].job_id
                     });
+                  }
                   }
                 }
               }

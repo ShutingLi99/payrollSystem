@@ -1,7 +1,7 @@
 <template>
     <div class="allhead">
       <div class="homeimg" >
-        <router-link :to="{path:'/back/home', query : {emp_name:this.user_name,emp_id:this.user_id}}" >
+        <router-link :to="{path:'/front/fhome', query : {emp_name:this.user_name,emp_id:this.user_id}}" >
           <img id="home" src="../../../assets/images/home.png" >
         </router-link>
       </div>
@@ -10,18 +10,18 @@
           <div  class="el-dropdown-link">
             <a href="#">
             <el-avatar shape="square"  :size="50" >
-              <img id="tou" src="../../../assets/images/touxiang.jpg" >
+              <img id="tou" src="../../../assets/images/frontx.jpg" >
             </el-avatar>
             </a>
           </div>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
-              <router-link  :to="{path:'/back/personalInfo', query : {emp_name:this.user_name,emp_id:this.user_id}}" >
+              <router-link  :to="{path:'/front/fpersonalInfo', query : {emp_name:this.user_name,emp_id:this.user_id}}" >
                 <i class="pay geren">&nbsp;&nbsp;个人信息</i>
               </router-link>
             </el-dropdown-item>
             <el-dropdown-item>
-              <router-link :to="{path:'/back/personalInfo', query : {emp_name:this.user_name,emp_id:this.user_id}}" >
+              <router-link :to="{path:'/front/fpersonalInfo', query : {emp_name:this.user_name,emp_id:this.user_id}}" >
                 <i class="pay mima">&nbsp;&nbsp;修改密码</i>
               </router-link>
             </el-dropdown-item>

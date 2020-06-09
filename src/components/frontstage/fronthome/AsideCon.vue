@@ -38,7 +38,7 @@
     export default {
         name: "AsideCon",
       props:[
-        "user_name","user_id"
+        "user_name","user_id","user_dep"
       ],
       data(){
         return{
@@ -47,29 +47,17 @@
               title:'公告',
               index:'1',
               icon:'pay gonggao',
-              path:'/back/announcement',
+              path:'/front/fannouncement',
               query:{emp_name:this.user_name,emp_id:this.user_id},
               children:[]
             },
             {
-              title:'人事管理',
+              title:'我的部门',
               index:'2',
-              icon:'pay renshi',
-              path:'',
-              children:[
-                {
-                  title:'部门管理',
-                  index:'2-1',
-                  icon:'pay bumen',
-                  path:'/back/depManagement',
-                },
-                {
-                  title:'员工管理',
-                  index:'2-2',
-                  icon:'pay yuangong',
-                  path:'/back/empManagement',
-                }
-              ]
+              icon:'pay bumen',
+              path:'/front/mydep',
+              query:{emp_name:this.user_name,emp_id:this.user_id,dep_id:this.user_dep},
+              children:[]
             },
 
             {
@@ -79,24 +67,24 @@
               path:'',
               children:[
                 {
-                  title:'员工考勤',
+                  title:'签到签退',
                   index:'3-1',
                   icon:'pay yuangong',
-                  path:'/back/empAttend',
+                  path:'/front/empAttend',
                   children:[]
                 },
                 {
                   title:'请假',
                   index:'3-2',
                   icon:'pay qingjia',
-                  path:'/back/leave',
+                  path:'/front/leave',
                   children:[]
                 },
                 {
                   title:'扣除款项',
                   index:'3-3',
                   icon:'pay fakuan',
-                  path:'/back/penalty',
+                  path:'/front/penalty',
                   children:[]
                 }
               ]
@@ -105,36 +93,16 @@
               title:'津贴管理',
               index:'4',
               icon:'pay jintie',
-              path:'/back/allowanceMan',
+              path:'/front/allowanceMan',
               children:[]
             },
             {
               title:'工资管理',
               index:'5',
               icon:'pay gongzi',
-              path:'',
+              path:'/front/mysal',
+              query:{emp_name:this.user_name,emp_id:this.user_id,dep_id:this.user_dep},
               children:[
-                {
-                  title:'部门工资',
-                  index:'5-1',
-                  icon:'pay bumen',
-                  path:'/back/depSal',
-                  children:[]
-                },
-                {
-                  title:'员工工资',
-                  index:'5-2',
-                  icon:'pay yuangong',
-                  path:'/back/empSal',
-                  children:[]
-                },
-                {
-                  title:'年终奖',
-                  index:'5-3',
-                  icon:'pay jiangli',
-                  path:'/back/bonus',
-                  children:[]
-                }
               ]
             }
           ]
@@ -167,7 +135,7 @@
     font-size: 30px;
   }
   .el-submenu__title:hover {
-    background-color: rgba(62, 129, 199, 0.5);
+    background-color: rgba(62, 129, 199, 0.32);
   }
   .el-submenu .el-menu{
     background-color:rgba(0,0,0,0);
@@ -223,7 +191,7 @@ left:29%;
     position: absolute;
   }
   .asidename{
-    background-color: rgba(36, 104, 162, 0.4);
+    background-color: rgba(36, 104, 162, 0.27);
     height: 8%;
     width: 100%;
 position: absolute;

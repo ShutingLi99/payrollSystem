@@ -26,6 +26,26 @@ export default new Router({
         { path:'home', name:'home', component:resolve => require(['@/components/common/Home'], resolve) },
         { path:'announcement', name:'announcement', component:resolve => require(['@/components/common/Announcement'], resolve)  },
         { path:'depManagement', name:'depManagement', component:resolve => require(['@/components/backstage/pages/DepManager'], resolve)  },
+        { path:'empManagement', name:'empManagement', component:resolve => require(['@/components/backstage/pages/empManager/EmpManager'], resolve)  },
+        { path:'empAttend', name:'empAttend', component:resolve => require(['@/components/backstage/pages/attendanceMan/EmpAttendance'], resolve)  },
+        { path:'leave', name:'leave', component:resolve => require(['@/components/backstage/pages/attendanceMan/EmpLeave'], resolve)  },
+        { path:'penalty', name:'penalty', component:resolve => require(['@/components/backstage/pages/attendanceMan/EmpPenalty'], resolve)  },
+        { path:'allowanceMan', name:'allowanceMan', component:resolve => require(['@/components/backstage/pages/EmpAllowanceMan'], resolve)  },
+        { path:'depSal', name:'depSal', component:resolve => require(['@/components/backstage/pages/salaryManager/DepSal'], resolve)  },
+        { path:'empSal', name:'empSal', component:resolve => require(['@/components/backstage/pages/salaryManager/EmpSal'], resolve)  },
+        { path:'bonus', name:'bonus', component:resolve => require(['@/components/backstage/pages/salaryManager/EmpBonus'], resolve)  },
+        { path:'personalInfo', name:'personalInfo', component:resolve => require(['@/components/common/individual/Personality'], resolve)  }
+      ]
+    },
+    {
+      path:'/front',component:resolve => require(['@/components/frontstage/fronthome/BackContainer'], resolve),
+      children:[
+        {path:'',redirect:{name:'fhome'}},
+        { path:'fhome', name:'fhome', component:resolve => require(['@/components/common/Home'], resolve) },
+        { path:'fannouncement', name:'fannouncement', component:resolve => require(['@/components/common/Announcement'], resolve)  },
+        { path:'fpersonalInfo', name:'fpersonalInfo', component:resolve => require(['@/components/common/individual/Personality'], resolve)  },
+        { path:'mydep', name:'mydep', component:resolve => require(['@/components/frontstage/pages/MyDepartment'], resolve) },
+        { path:'mysal', name:'mysal', component:resolve => require(['@/components/frontstage/pages/MySalary'], resolve) }
       ]
     }
     // { path:'/back', component:resolve => require(['@/components/backstage/backhome/BackContainer'], resolve),
